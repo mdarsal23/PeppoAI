@@ -1,8 +1,8 @@
-// api/give.js
-import { InferenceClient } from "@huggingface/inference";
 
+import { InferenceClient } from "@huggingface/inference";
+// handler for accessing the hugging face textToVideo api endpoint
 export default async function handler(req, res) {
-  // Handle preflight for CORS if frontend is a different project
+  // 
   if (req.method === "OPTIONS") {
     res.setHeader("Access-Control-Allow-Origin", "https://my-frontend.vercel.app");
     res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
