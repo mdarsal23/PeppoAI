@@ -31,7 +31,7 @@ function App() {
     setError('')
     try {
       const response = await api.post(
-        '/api/give',
+        '/give',
         { prompt },
         { responseType: 'arraybuffer' }
       )
