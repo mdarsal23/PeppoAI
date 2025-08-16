@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-
+import api from './API.jsx';
 // Configure axios base URL
-axios.defaults.baseURL = 'http://localhost:5000';
+//axios.defaults.baseURL = 'http://localhost:5000';
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -30,7 +30,7 @@ function App() {
     setIsLoading(true)
     setError('')
     try {
-      const response = await axios.post(
+      const response = await api.post(
         '/api/give',
         { prompt },
         { responseType: 'arraybuffer' }

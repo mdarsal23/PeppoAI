@@ -9,8 +9,18 @@ const PORT = 5000;
 
 
 
+const allowed = [
+  "http://localhost:5173",
+  "https://your-frontend.vercel.app",
+  /\.vercel\.app$/  // preview deployments
+]
+
 app.use(cors({ 
-  origin: "http://localhost:5173",
+   origin: (origin, cb) => {
+    if (!origin) return cb(null, true)
+    const ok = allowed.some(o => o instanceof RegExp ? o.test(origin) : o === origin)
+    cb(ok ? null : new Error("Not allowed by CORS"), ok)
+  },
   methods: ['GET', 'POST'],
   credentials: true
 }));
